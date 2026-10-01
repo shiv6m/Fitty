@@ -3,50 +3,44 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const tabs = [
-  { href: "/outfits", label: "Outfits" },
-  { href: "/explore", label: "Explore" },
-  { href: "/saved", label: "Saved" },
-  { href: "/settings", label: "Settings" },
-];
-
 export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+    <nav
+      className="fixed bottom-0 left-0 right-0"
+      style={{ background: "var(--paper)", borderTop: "1.5px dashed var(--line)" }}
+    >
       <div className="relative flex items-center justify-around h-16 px-2">
-        {tabs.slice(0, 2).map((tab) => (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className={`text-xs ${
-              pathname === tab.href ? "text-black font-semibold" : "text-gray-400"
-            }`}
-          >
-            {tab.label}
-          </Link>
-        ))}
+        <Link
+          href="/outfits"
+          className="text-xs font-mono uppercase tracking-wide"
+          style={{
+            color: pathname === "/outfits" ? "var(--ink)" : "var(--muted)",
+            fontWeight: pathname === "/outfits" ? 600 : 400,
+          }}
+        >
+          Profile
+        </Link>
 
-        {/* Center + button, elevated above the bar */}
         <Link
           href="/add"
-          className="absolute left-1/2 -translate-x-1/2 -top-6 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-3xl shadow-lg"
+          className="absolute left-1/2 -translate-x-1/2 -top-6 w-14 h-14 rounded-full flex items-center justify-center text-3xl text-white shadow-lg"
+          style={{ background: "var(--thread)" }}
         >
           +
         </Link>
 
-        {tabs.slice(2).map((tab) => (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className={`text-xs ${
-              pathname === tab.href ? "text-black font-semibold" : "text-gray-400"
-            }`}
-          >
-            {tab.label}
-          </Link>
-        ))}
+        <Link
+          href="/explore"
+          className="text-xs font-mono uppercase tracking-wide"
+          style={{
+            color: pathname === "/explore" ? "var(--ink)" : "var(--muted)",
+            fontWeight: pathname === "/explore" ? 600 : 400,
+          }}
+        >
+          Explore
+        </Link>
       </div>
     </nav>
   );
