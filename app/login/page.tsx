@@ -22,9 +22,7 @@ export default function LoginPage() {
 
     if (isSignUp) {
       if (!USERNAME_REGEX.test(username)) {
-        setError(
-          "Username must be at least 3 characters, using only letters, numbers, _ or ."
-        );
+        setError("Username must be at least 3 characters, using only letters, numbers, _ or .");
         return;
       }
     }
@@ -66,9 +64,7 @@ export default function LoginPage() {
           return;
         }
 
-        const { data: urlData } = supabase.storage
-          .from("avatars")
-          .getPublicUrl(fileName);
+        const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(fileName);
         avatarUrl = urlData.publicUrl;
       }
 
@@ -136,9 +132,7 @@ export default function LoginPage() {
               required
             />
             <div>
-              <label className="text-sm text-gray-500 block mb-1">
-                Profile photo (optional)
-              </label>
+              <label className="text-sm text-gray-500 block mb-1">Profile photo (optional)</label>
               <input
                 type="file"
                 accept="image/png, image/jpeg, image/webp"

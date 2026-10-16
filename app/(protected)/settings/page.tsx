@@ -50,9 +50,7 @@ export default function SettingsPage() {
     setSuccess(false);
 
     if (!USERNAME_REGEX.test(username)) {
-      setError(
-        "Username must be at least 3 characters, using only letters, numbers, _ or ."
-      );
+      setError("Username must be at least 3 characters, using only letters, numbers, _ or .");
       return;
     }
 
@@ -74,9 +72,7 @@ export default function SettingsPage() {
         return;
       }
 
-      const { data: urlData } = supabase.storage
-        .from("avatars")
-        .getPublicUrl(fileName);
+      const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(fileName);
       newAvatarUrl = urlData.publicUrl;
     }
 
@@ -161,7 +157,10 @@ export default function SettingsPage() {
           />
         </div>
 
-        <label className="text-xs font-mono uppercase tracking-wide" style={{ color: "var(--muted)" }}>
+        <label
+          className="text-xs font-mono uppercase tracking-wide"
+          style={{ color: "var(--muted)" }}
+        >
           Username
         </label>
         <input
@@ -173,7 +172,10 @@ export default function SettingsPage() {
           required
         />
 
-        <label className="text-xs font-mono uppercase tracking-wide" style={{ color: "var(--muted)" }}>
+        <label
+          className="text-xs font-mono uppercase tracking-wide"
+          style={{ color: "var(--muted)" }}
+        >
           Display name
         </label>
         <input
@@ -184,7 +186,10 @@ export default function SettingsPage() {
           style={inputStyle}
         />
 
-        <label className="text-xs font-mono uppercase tracking-wide" style={{ color: "var(--muted)" }}>
+        <label
+          className="text-xs font-mono uppercase tracking-wide"
+          style={{ color: "var(--muted)" }}
+        >
           Bio
         </label>
         <textarea
@@ -195,8 +200,16 @@ export default function SettingsPage() {
           style={inputStyle}
         />
 
-        {error && <p className="text-sm" style={{ color: "var(--thread)" }}>{error}</p>}
-        {success && <p className="text-sm" style={{ color: "var(--denim)" }}>Profile updated.</p>}
+        {error && (
+          <p className="text-sm" style={{ color: "var(--thread)" }}>
+            {error}
+          </p>
+        )}
+        {success && (
+          <p className="text-sm" style={{ color: "var(--denim)" }}>
+            Profile updated.
+          </p>
+        )}
 
         <button
           type="submit"

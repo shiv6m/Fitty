@@ -45,9 +45,7 @@ export default function AddPage() {
     }
 
     // Get the public URL for the uploaded file
-    const { data: urlData } = supabase.storage
-      .from("outfit-images")
-      .getPublicUrl(fileName);
+    const { data: urlData } = supabase.storage.from("outfit-images").getPublicUrl(fileName);
 
     // Insert a row into the outfits table
     const { error: insertError } = await supabase.from("outfits").insert({

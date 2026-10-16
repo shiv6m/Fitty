@@ -63,11 +63,7 @@ export default function ProfilePage() {
 
         <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
           {profile?.avatar_url ? (
-            <img
-              src={profile.avatar_url}
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
+            <img src={profile.avatar_url} alt="Profile" className="w-full h-full object-cover" />
           ) : (
             <span className="text-gray-400 text-2xl">
               {profile?.username?.[0]?.toUpperCase() ?? "?"}
